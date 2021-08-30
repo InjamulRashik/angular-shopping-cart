@@ -5,7 +5,7 @@ import { ProductPageComponent } from './components/product-page/product-page.com
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: '',
     component: HomeComponent,
   },
   {
