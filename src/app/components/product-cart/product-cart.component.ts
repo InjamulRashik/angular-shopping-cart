@@ -20,7 +20,6 @@ export class ProductCartComponent implements OnInit {
     this.cartItems?.forEach((item) => {
       this.item = item;
       this.totalPrice += this.item.price;
-      this.totalPrice.toString = this.totalPrice.toFixed(2).toString;
     });
   }
 
