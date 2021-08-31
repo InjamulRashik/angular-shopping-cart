@@ -13,26 +13,18 @@ import {
 export class ProductCartComponent implements OnInit {
   @Input() cartItems?: any[];
   totalPrice = 0;
-  closeResult = '';
+  item: any;
   constructor(private modalService: NgbModal) {}
-
-  ngOnInit(): void {}
   open(content: any) {
-    this.modalService
-      .open(content, { ariaLabelledBy: 'modal-basic-title' })
-      .result.then(
-        (result) => {
-          this.closeResult = `Closed with: ${result}`;
-        },
-        (reason) => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        }
-      );
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
     this.cartItems?.forEach((item) => {
-      this.totalPrice += item.price;
-      console.log(item);
+      this.item = item;
+      this.totalPrice += this.item.price;
+      this.totalPrice.toString = this.totalPrice.toFixed(2).toString;
     });
   }
+
+  ngOnInit(): void {}
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -43,4 +35,7 @@ export class ProductCartComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+}
+function ngOnDestroy() {
+  throw new Error('Function not implemented.');
 }
