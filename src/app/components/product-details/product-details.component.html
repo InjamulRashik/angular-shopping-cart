@@ -1,1 +1,28 @@
-<p>product-details works!</p>
+<div *ngFor="let product of products">
+  <div *ngIf="productId == product.id" class="d-flex justify-content-center">
+    <div class="card mt-4" style="width: 30rem">
+      <img
+        height="400"
+        src="{{ product.image }}"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body text-start">
+        <h5 class="card-title text-dark">{{ product.title }}</h5>
+        <p>{{ product.description }}</p>
+        <p>Catagory : {{ product.category }}</p>
+        <h6 class="text-warning">
+          Rating : <span class="text-success">{{ product.rating.rate }}</span>
+        </h6>
+        <p class="card-text text-dark">
+          <span class="text-info"
+            ><b>BDT {{ product.price }}</b></span
+          >
+        </p>
+        <button class="btn btn-danger mr-3" routerLink="/product-page">
+          Back to Product Page
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

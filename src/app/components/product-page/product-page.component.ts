@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProductDataService } from 'src/app/services/product-data.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ProductDataService } from 'src/app/services/product-data.service';
 })
 export class ProductPageComponent implements OnInit {
   products: any;
-  constructor(private productData: ProductDataService) {
+  constructor(private productData: ProductDataService, router: Router) {
     this.productData.products().subscribe((data) => {
       this.products = data;
     });
