@@ -10,7 +10,31 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">This is cart body</div>
+  <div class="modal-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Product ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price (BDT)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cartItem of cartItems">
+          <th scope="row">{{ cartItem.id }}</th>
+          <td>{{ cartItem.title }}</td>
+          <td>{{ cartItem.price }} BDT</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td>
+            <b>Total Price : {{ totalPrice }} BDT</b>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <div class="modal-footer">
     <button
       type="button"

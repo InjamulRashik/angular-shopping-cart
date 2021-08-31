@@ -8,12 +8,17 @@ import { ProductDataService } from 'src/app/services/product-data.service';
   styleUrls: ['./product-page.component.css'],
 })
 export class ProductPageComponent implements OnInit {
+  selectedProducts = [] as any;
   products: any;
   constructor(private productData: ProductDataService, router: Router) {
     this.productData.products().subscribe((data) => {
       this.products = data;
     });
   }
-
   ngOnInit(): void {}
+
+  onAddToCart(product: any) {
+    this.selectedProducts.push(product);
+    console.log(this.selectedProducts);
+  }
 }

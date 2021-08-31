@@ -1,3 +1,6 @@
+<div class="cart-btn">
+  <app-product-cart [cartItems]="selectedProducts"> </app-product-cart>
+</div>
 <div class="container d-flex justify-content-center">
   <div class="row d-flex justify-content-center">
     <div
@@ -26,6 +29,7 @@
           </button>
 
           <button
+            (click)="onAddToCart(product)"
             class="btn btn-success"
             [swal]="['Wooh!', 'Product Added to Cart 😉', 'success']"
           >

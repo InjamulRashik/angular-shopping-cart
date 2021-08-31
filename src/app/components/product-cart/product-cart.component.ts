@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   ModalDismissReasons,
   NgbModal,
@@ -11,6 +11,8 @@ import {
   styleUrls: ['./product-cart.component.css'],
 })
 export class ProductCartComponent implements OnInit {
+  @Input() cartItems?: any[];
+  totalPrice = 0;
   closeResult = '';
   constructor(private modalService: NgbModal) {}
 
@@ -26,6 +28,10 @@ export class ProductCartComponent implements OnInit {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         }
       );
+    this.cartItems?.forEach((item) => {
+      this.totalPrice += item.price;
+      console.log(item);
+    });
   }
 
   private getDismissReason(reason: any): string {
